@@ -25,7 +25,7 @@ long RunOne(byte step, int times)
 long Run(byte[] input, int times) => input.Select(i => RunOne(i, times)).Sum();
  
 // ----- INPUT  ----- //
-var seq = Console.ReadLine().Split(',').Select(byte.Parse).ToArray();
+var seq = Console.ReadLine()!.Split(',').Select(byte.Parse).ToArray();
 // ----- PART 1 ----- //
 Console.WriteLine($"Part 1: {Run(seq, 80)}");
 // ----- PART 2 ----- //

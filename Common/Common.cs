@@ -7,7 +7,7 @@
             while (true)
             {
                 var s = Console.ReadLine();
-                var i = int.Parse(s);
+                var i = int.Parse(s!);
                 if (i == -1) yield break;
                 yield return i;
             }
@@ -19,7 +19,7 @@
             {
                 var s = Console.ReadLine();
                 if (s == delimiter) yield break;
-                yield return s;
+                yield return s!;
             }
         }
     }
@@ -35,21 +35,16 @@
             Y = y;
         }
 
-        public static V2I operator +(V2I lhs, V2I rhs) => new V2I (lhs.X + rhs.X, lhs.Y + rhs.Y);
-        public static V2I operator -(V2I lhs, V2I rhs) => new V2I(lhs.X - rhs.X, lhs.Y - rhs.Y);
-        public static V2I operator *(V2I lhs, V2I rhs) => new V2I(lhs.X * rhs.X, lhs.Y * rhs.Y);
-        public static V2I operator *(V2I lhs, int rhs) => new V2I(lhs.X * rhs, lhs.Y * rhs);
+        public static V2I operator +(V2I lhs, V2I rhs) => new(lhs.X + rhs.X, lhs.Y + rhs.Y);
+        public static V2I operator -(V2I lhs, V2I rhs) => new(lhs.X - rhs.X, lhs.Y - rhs.Y);
+        public static V2I operator *(V2I lhs, V2I rhs) => new(lhs.X * rhs.X, lhs.Y * rhs.Y);
+        public static V2I operator *(V2I lhs, int rhs) => new(lhs.X * rhs, lhs.Y * rhs);
         public static V2I operator *(int lhs, V2I rhs) => rhs * lhs;
         public static bool operator ==(V2I lhs, V2I rhs) => lhs.X == rhs.X && lhs.Y == rhs.Y;
         public static bool operator !=(V2I lhs, V2I rhs) => !(lhs == rhs);
 
         public override string ToString() => $"({X}, {Y})";
-
-        public override bool Equals(object obj)
-        {
-            if (obj is null) return false;
-            if (obj is V2I v2i) return v2i == this;
-            return false;
-        }
+        public override bool Equals(object? obj) => obj is V2I v && v == this;
+        public override int GetHashCode() => HashCode.Combine(X, Y);
     }
 }

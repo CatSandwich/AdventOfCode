@@ -26,19 +26,19 @@ Console.WriteLine($"Part 1: {position.X * position.Y}");
 // ----- PART 2 ----- //
 var position2 = new V2I(0, 0);
 var aim = 0;
-foreach(var instruction in instructions)
+foreach(var (dir, amount) in instructions)
 {
-    aim += instruction.dir switch
+    aim += dir switch
     {
-        "up" => -instruction.amount,
-        "down" => instruction.amount,
+        "up" => -amount,
+        "down" => amount,
         _ => 0
     };
 
-    if(instruction.dir == "forward")
+    if(dir == "forward")
     {
-        position2.X += instruction.amount;
-        position2.Y += aim * instruction.amount;
+        position2.X += amount;
+        position2.Y += aim * amount;
     }
 }
 Console.WriteLine($"Part 2: {position2.X * position2.Y}");
