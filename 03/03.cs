@@ -5,7 +5,7 @@ IEnumerable<Count> GetCounts(string[] nums)
 {
     for(var i = 0; i < nums[0].Length; i++)
     {
-        yield return new Count() { Zero = nums.Count(num => num[i] == '0'), One = nums.Count(num => num[i] == '1') };
+        yield return new Count { Zero = nums.Count(num => num[i] == '0'), One = nums.Count(num => num[i] == '1') };
     }
 }
 
