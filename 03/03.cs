@@ -1,7 +1,7 @@
 ﻿using Common;
 
 // Count the 1s and 0s in each digit place in a given set of binary values
-IEnumerable<Count> GetCounts(string[] nums)
+IEnumerable<Count> GetCounts(IReadOnlyList<string> nums)
 {
     for(var i = 0; i < nums[0].Length; i++)
     {

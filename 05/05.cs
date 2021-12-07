@@ -66,14 +66,14 @@ class Ray
             var max = Start.Y > End.Y ? Start.Y : End.Y;
             return point.Y >= min && point.Y <= max;
         }
-        else if(Start.Y == End.Y) 
+        if(Start.Y == End.Y) 
         {
             if (point.Y != Start.Y) return false;
             var min = Start.X < End.X ? Start.X : End.X;
             var max = Start.X > End.X ? Start.X : End.X;
             return point.X >= min && point.X <= max;
         }
-        else if(diag)
+        if(diag)
         {
             V2I step = new V2I(End.X > Start.X ? 1 : -1, End.Y > Start.Y ? 1 : -1);
 

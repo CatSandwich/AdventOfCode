@@ -12,18 +12,18 @@ IEnumerable<byte> Iterate(byte step)
     else yield return (byte)(step - 1);
 }
 
-// Iterate a fish of a given step a given number of times. Returns cached value if exists, caches one if not.
+// Get the number of fish created by a fish of a given step in a given number of iterations
 long RunOne(byte step, int times)
 {
-    if (times == 1) return step == 0 ? 2 : 1; // Base case
+    if (times <= step) return 1; // Won't duplicate
     if (cache.TryGetValue((step, times), out var val)) return val; // Cached value
     
     // Iterate once then recurse on results
     return cache[(step, times)] = Iterate(step).Select(i => RunOne(i, times - 1)).Sum();
 }
 
-long Run(byte[] input, int times) => input.Select(i => RunOne(i, times)).Sum();
- 
+long Run(IEnumerable<byte> input, int times) => input.Select(i => RunOne(i, times)).Sum();
+
 // ----- INPUT  ----- //
 var seq = Console.ReadLine()!.Split(',').Select(byte.Parse).ToArray();
 // ----- PART 1 ----- //
