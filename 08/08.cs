@@ -14,16 +14,16 @@ Console.WriteLine($"Part 1: {count}");
 // Maps numbers to their combination of segments
 var numbers = new Dictionary<byte, Segments>
 {
-    [0] = Segments.Top | Segments.TopLeft | Segments.TopRight |                    Segments.BottomLeft | Segments.BottomRight | Segments.Bottom,
-    [1] =                                     Segments.TopRight |                                           Segments.BottomRight                   ,
-    [2] = Segments.Top |                     Segments.TopRight | Segments.Middle | Segments.BottomLeft |                         Segments.Bottom,
-    [3] = Segments.Top |                     Segments.TopRight | Segments.Middle |                        Segments.BottomRight | Segments.Bottom,
-    [4] =                 Segments.TopLeft | Segments.TopRight | Segments.Middle |                        Segments.BottomRight                   ,
-    [5] = Segments.Top | Segments.TopLeft |                      Segments.Middle |                        Segments.BottomRight | Segments.Bottom,
-    [6] = Segments.Top | Segments.TopLeft |                      Segments.Middle | Segments.BottomLeft | Segments.BottomRight | Segments.Bottom,
-    [7] = Segments.Top |                     Segments.TopRight |                                           Segments.BottomRight                   ,
+    [0] = Segments.Top | Segments.TopLeft | Segments.TopRight |                   Segments.BottomLeft | Segments.BottomRight | Segments.Bottom,
+    [1] =                                   Segments.TopRight |                                         Segments.BottomRight                  ,
+    [2] = Segments.Top |                    Segments.TopRight | Segments.Middle | Segments.BottomLeft |                        Segments.Bottom,
+    [3] = Segments.Top |                    Segments.TopRight | Segments.Middle |                       Segments.BottomRight | Segments.Bottom,
+    [4] =                Segments.TopLeft | Segments.TopRight | Segments.Middle |                       Segments.BottomRight                  ,
+    [5] = Segments.Top | Segments.TopLeft |                     Segments.Middle |                       Segments.BottomRight | Segments.Bottom,
+    [6] = Segments.Top | Segments.TopLeft |                     Segments.Middle | Segments.BottomLeft | Segments.BottomRight | Segments.Bottom,
+    [7] = Segments.Top |                    Segments.TopRight |                                         Segments.BottomRight                  ,
     [8] = Segments.Top | Segments.TopLeft | Segments.TopRight | Segments.Middle | Segments.BottomLeft | Segments.BottomRight | Segments.Bottom,
-    [9] = Segments.Top | Segments.TopLeft | Segments.TopRight | Segments.Middle |                        Segments.BottomRight | Segments.Bottom
+    [9] = Segments.Top | Segments.TopLeft | Segments.TopRight | Segments.Middle |                       Segments.BottomRight | Segments.Bottom
 };
 
 // Does the inverse of the above
