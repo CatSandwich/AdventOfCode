@@ -1,4 +1,6 @@
-﻿namespace Common
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Common
 {
     public static class IO
     {
@@ -21,6 +23,25 @@
                 if (s == delimiter) yield break;
                 yield return s!;
             }
+        }
+    }
+
+    public static class Extensions
+    {
+        public static T[,] To2D<T>(this T[][] jagged)
+        {
+            if (jagged.Length == 0) return new T[0, 0];
+            if (jagged[0].Length == 0) return new T[jagged.Length, 0];
+
+            var arr = new T[jagged.Length, jagged[0].Length];
+            for (var x = 0; x < jagged.Length; x++)
+            {
+                for (var y = 0; y < jagged[0].Length; y++)
+                {
+                    arr[x, y] = jagged[x][y];
+                }
+            }
+            return arr;
         }
     }
 
