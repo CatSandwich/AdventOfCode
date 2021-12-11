@@ -47,6 +47,9 @@ namespace Common
 
     public struct V2I
     {
+        public static IEnumerable<V2I> Adjacent = new V2I[] { new(0, 1), new(1, 0), new(0, -1), new(-1, 0) };
+        public static IEnumerable<V2I> Diagonal = new V2I[] { new(1, 1), new(-1, -1), new(-1, 1), new(1, -1) };
+
         public int X;
         public int Y;
 
@@ -54,6 +57,16 @@ namespace Common
         {
             X = x;
             Y = y;
+        }
+
+        public V2I[] GetAdjacent(bool diagonal)
+        {
+            var copy = this; // Copy to allow for closure
+
+            var collection = Adjacent;
+            if (diagonal) collection = collection.Concat(Diagonal);
+
+            return collection.Select(v2 => copy + v2).ToArray();
         }
 
         public static V2I operator +(V2I lhs, V2I rhs) => new(lhs.X + rhs.X, lhs.Y + rhs.Y);
